@@ -1,13 +1,14 @@
 import unittest
 from selenium import webdriver
+from PageObject.RegisterAccountPage import RegisterAccountPage
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 
-class TestLambdaTestPlaygroundEcommerce(unittest.TestCase):
-    def setUp(self):       
+class WebDriverSetup(unittest.TestCase):
+    def setUp(self):
         #lambdatest setup and opening the desired website
-        username = "Your LambdaTest Username"
-        accessToken = "Your LambdaTest Access Token"
+        username = "paulocol"
+        accessToken = "8Yl2j4huUuLPcQIkt54LrxujI0Of43g1vZaSAbBiCi8FRMdi7Y"
         gridUrl = "hub.lambdatest.com/wd/hub"
         
         capabilities = {
@@ -28,16 +29,11 @@ class TestLambdaTestPlaygroundEcommerce(unittest.TestCase):
             command_executor=url,
             desired_capabilities=capabilities
         )
-        
+
+        self.driver.get("https://ecommerce-playground.lambdatest.io/index.php?route=account/register")
         self.driver.maximize_window()
-        self.driver.get("https://ecommerce-playground.lambdatest.io/")
+
+        self.register_account_page = RegisterAccountPage(self.driver)
     
     def tearDown(self):
         self.driver.quit()
-    
-    def test_page_title(self):
-        title = self.driver.title
-        self.assertEqual(title, "Your Store")
-
-if __name__ == '__main__':
-    unittest.main()
