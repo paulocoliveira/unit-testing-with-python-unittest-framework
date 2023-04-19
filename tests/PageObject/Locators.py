@@ -1,6 +1,4 @@
-class Locators(object):
-    #Register Account Page
-    
+class Locators(object):   
     #Labels
     first_name_label = "//label[@for='input-firstname']"
     last_name_label = "//label[@for='input-lastname']"

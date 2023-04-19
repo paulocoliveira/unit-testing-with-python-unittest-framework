@@ -1,7 +1,6 @@
 import unittest
 from TestBase.WebDriverSetup import WebDriverSetup
 from selenium.webdriver.common.by import By
-
 from PageObject.Locators import Locators
 
 #This class will check specifically the behaviour of the password and confirm password fields
@@ -15,20 +14,20 @@ class TestLambdaTestPlaygroundRegisterFormPassword(WebDriverSetup):
         last_name.send_keys("LastName")
 
         email = self.register_account_page.getEmail()
-        email.send_keys("email13112@email.com")
+        email.send_keys("email13117@email.com")
 
         telephone = self.register_account_page.getTelephone()
         telephone.send_keys("+351999888777")
-
-        terms = self.register_account_page.getTerms()
-        terms.click()
         
         password = self.register_account_page.getPassword()
         password.send_keys("123456")
 
         password_confirm = self.register_account_page.getConfirmPassword()
         password_confirm.send_keys("123456")
-        
+
+        terms = self.register_account_page.getTerms()
+        terms.click()
+
         continue_button = self.register_account_page.getContinueButton()
         continue_button.click()
 

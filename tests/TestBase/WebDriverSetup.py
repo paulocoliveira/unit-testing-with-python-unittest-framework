@@ -1,8 +1,6 @@
 import unittest
 from selenium import webdriver
 from PageObject.RegisterAccountPage import RegisterAccountPage
-from selenium.webdriver.chrome.service import Service
-from webdriver_manager.chrome import ChromeDriverManager
 
 class WebDriverSetup(unittest.TestCase):
     def setUp(self):
