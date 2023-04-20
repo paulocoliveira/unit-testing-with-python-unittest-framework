@@ -2,7 +2,7 @@ import unittest
 from TestBase.WebDriverSetup import WebDriverSetup
 
 #This class will check the correct text to each label of the page
-class TestLambdaTestPlaygroundRegisterFormLabels(WebDriverSetup):
+class TestFormLabels(WebDriverSetup):
   
     def test_first_name_label(self):
         self.assertEqual(self.register_account_page.getFirstNameLabel(), "First Name")

@@ -1,31 +1,30 @@
 import unittest
+import os
 from selenium import webdriver
 from PageObject.RegisterAccountPage import RegisterAccountPage
 
 class WebDriverSetup(unittest.TestCase):
     def setUp(self):
-        #lambdatest setup and opening the desired website
-        username = "paulocol"
-        accessToken = "8Yl2j4huUuLPcQIkt54LrxujI0Of43g1vZaSAbBiCi8FRMdi7Y"
+        username = os.getenv("LT_USERNAME")
+        accessToken = os.getenv("LT_ACCESS_KEY")
         gridUrl = "hub.lambdatest.com/wd/hub"
-        
-        capabilities = {
-            'LT:Options' : {
-                "user" : "Your LambdaTest Username",
-                "accessKey" : "Your LambdaTest Access Key",
-                "build" : "your build name",
-                "name" : "your test name",
-                "platformName" : "Windows 11",
-            },
-            "browserName" : "Chrome",
-            "browserVersion" : "103.0",
-        }
+
+        options = webdriver.ChromeOptions()
+        options.browser_version = "latest"
+        options.platform_name = "Windows 11"
+        lt_options = {}
+        lt_options["username"] = username
+        lt_options["accessKey"] = accessToken
+        lt_options["build"] = "your build name"
+        lt_options["project"] = "your project name"
+        lt_options["name"] = "your test name"
+        options.set_capability('LT:Options', lt_options)
         
         url = "https://"+username+":"+accessToken+"@"+gridUrl
         
         self.driver = webdriver.Remote(
             command_executor=url,
-            desired_capabilities=capabilities
+            options=options
         )
 
         self.driver.get("https://ecommerce-playground.lambdatest.io/index.php?route=account/register")

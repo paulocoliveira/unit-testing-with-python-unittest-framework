@@ -4,7 +4,7 @@ from selenium.webdriver.common.by import By
 from PageObject.Locators import Locators
 
 #This class will check specifically the behaviour of the password and confirm password fields
-class TestLambdaTestPlaygroundRegisterFormPassword(WebDriverSetup):
+class TestFormPassword(WebDriverSetup):
 
     def test_password_correct_confirmation(self):
         first_name = self.register_account_page.getFirstName()
@@ -14,7 +14,7 @@ class TestLambdaTestPlaygroundRegisterFormPassword(WebDriverSetup):
         last_name.send_keys("LastName")
 
         email = self.register_account_page.getEmail()
-        email.send_keys("email13117@email.com")
+        email.send_keys("email13120@email.com")
 
         telephone = self.register_account_page.getTelephone()
         telephone.send_keys("+351999888777")
